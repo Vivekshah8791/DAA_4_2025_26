@@ -36,17 +36,18 @@ void complexRec(int n,int count) {
        reverse(small.begin(), small.end());
    }
    auto end=high_resolution_clock::now();
-   complexRec(n / 2,count);
+   auto duration=duration_cast<milliseconds>(end-start);
+   cout<<"duration "<<duration.count()<<endl;
    depth++;
    complexRec(n / 2,count);
    complexRec(n / 2,count);
+   complexRec(n / 2,count);
    cout<<"depth "<<n/depth<<endl; 
-   auto duration=duration_cast<milliseconds>(end-start);
-   cout<<"duration "<<duration.count()<<endl;
    cout<<"count "<<count;
 }
 // recurrence relation ---> T(n)=3T(n/2)+n+n+(n**2)/2
 //Time complexity using master theorem ---> O(n**2)     Case P>=0
 int main(){
     complexRec(8,0);
+
 }
